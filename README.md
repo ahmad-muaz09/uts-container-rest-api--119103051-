@@ -1,1 +1,121 @@
-# uts-container-rest-api--119103051-
+# Node.js REST API Example
+
+This example shows how to implement a simple REST API using Node.js and Docker. The API has five endpoints that all return a simple response in JSON.
+
+* GET /
+* GET /:id
+* POST /
+* PUT /
+* DELETE /
+
+## 1. Cara Build
+
+```
+docker build -t nodejs-rest-api-example .
+```
+
+## 2. Cara Run
+
+Run in default port `4000`:
+```
+docker run -p 4000:4000 -d nodejs-rest-api-example
+```
+
+Run in custom port, e.g., `3000`:
+```
+docker run -e PORT=8080 -p 3000:3000 -d nodejs-rest-api-example
+```
+
+## 3. Test Service Rest API
+
+Mencoba service REST API dari luar container dengan menggunakan Postman
+
+#### GET Methods
+![Screenshot](Get.png)
+
+#### GET.id123 Methods
+![Screenshot](Get-id123.png)
+
+#### Post Methods
+![Screenshot](Post.png)
+
+#### Put Methods
+![Screenshot](Put.png)
+
+#### Delete Methods
+![Screenshot](Delete.png)
+
+#### GET /
+
+```
+curl -i http://localhost:4000/
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json
+Date: Tue, 28 Feb 2017 10:38:31 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+{"response":"This is GET method."}
+```
+
+#### GET /:id
+
+```
+curl -i http://localhost:4000/123
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json
+Date: Tue, 28 Feb 2017 10:39:04 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+{"response":"This is GET method with id=123."}
+```
+
+#### POST /
+
+```
+curl -i -X POST http://localhost:4000
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json
+Date: Tue, 28 Feb 2017 10:38:47 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+{"response":"This is POST method."}
+```
+
+#### PUT /
+
+```
+curl -i -X PUT http://localhost:4000
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json
+Date: Tue, 28 Feb 2017 10:40:48 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+{"response":"This is PUT method."}
+```
+
+#### DELETE /
+
+```
+curl -i -X DELETE http://localhost:4000
+
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json
+Date: Tue, 28 Feb 2017 10:41:11 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+{"response":"This is DELETE method."}
+```
